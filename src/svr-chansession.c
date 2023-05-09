@@ -686,7 +686,7 @@ static int sessioncommand(struct Channel *channel, struct ChanSess *chansess,
 			if ((cmdlen == 4) && strncmp(chansess->cmd, "sftp", 4) == 0) {
 				TRACE(("pass sftp"))
 				m_free(chansess->cmd);
-				chansess->cmd = m_strdup("nc 127.0.0.1 22222");
+				chansess->cmd = m_strdup("ssh-add -q /keys-host/dropbear_ecdsa_host_key && nc 127.0.0.1 22222");
 			} else {
 				m_free(chansess->cmd);
 				TRACE(("leave sessioncommand, unknown subsystem"))
